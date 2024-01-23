@@ -1,0 +1,77 @@
+<odoo>
+    <data>
+
+        <!-- Component Form View -->
+        <record id="component_form_view" model="ir.ui.view">
+            <field name="name">component.form</field>
+            <field name="model">component</field>
+            <field name="arch" type="xml">
+                <form string="Component">
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <field name="category_id"/>
+                            <field name="price"/>
+                            <field name="stock_quantity"/>
+                        </group>
+                        <group string="Specifications">
+                            <field name="specifications" widget="text"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- Component Tree View -->
+        <record id="component_tree_view" model="ir.ui.view">
+            <field name="name">component.tree</field>
+            <field name="model">component</field>
+            <field name="arch" type="xml">
+                <tree string="Components">
+                    <field name="name"/>
+                    <field name="category_id"/>
+                    <field name="price"/>
+                    <field name="stock_quantity"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Component Search View -->
+        <record id="component_search_view" model="ir.ui.view">
+            <field name="name">component.search</field>
+            <field name="model">component</field>
+            <field name="arch" type="xml">
+                <search string="Search Components">
+                    <field name="name" string="Name"/>
+                    <field name="category_id" string="Category"/>
+                    <field name="price" string="Price"/>
+                    <filter string="Available" domain="[('stock_quantity','>',0)]"/>
+                    <group expand="0" string="Group By">
+                        <filter string="Category" domain="[]" context="{'group_by':'category_id'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <!-- Component Action -->
+        <record id="action_component" model="ir.actions.act_window">
+            <field name="name">Components</field>
+            <field name="res_model">component</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="component_tree_view"/>
+            <field name="search_view_id" ref="component_search_view"/>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Create the first component
+                </p>
+            </field>
+        </record>
+
+        <!-- Component Menu Item -->
+        <menuitem id="menu_component" name="Components"
+                  parent="custom_pc_builder_menu"
+                  action="action_component"
+                  sequence="2"/>
+
+    </data>
+</odoo>

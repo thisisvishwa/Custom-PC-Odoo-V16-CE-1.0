@@ -1,0 +1,41 @@
+<odoo>
+    <data>
+
+        <!-- External API Integration Views -->
+
+        <!-- Action to open the external API integration settings -->
+        <record id="action_external_api_integration_settings" model="ir.actions.act_window">
+            <field name="name">External API Integration</field>
+            <field name="res_model">external.api.integration.settings</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+
+        <!-- Menu item for external API integration settings -->
+        <menuitem id="menu_external_api_integration_settings"
+                  name="External API Integration"
+                  action="action_external_api_integration_settings"
+                  parent="custom_pc_module.menu_custom_pc_root"
+                  sequence="10"/>
+
+        <!-- External API integration settings form view -->
+        <record id="view_external_api_integration_settings_form" model="ir.ui.view">
+            <field name="name">external.api.integration.settings.form</field>
+            <field name="model">external.api.integration.settings</field>
+            <field name="arch" type="xml">
+                <form string="External API Integration Settings">
+                    <group>
+                        <field name="api_key" string="API Key"/>
+                        <field name="vendor_api_url" string="Vendor API URL"/>
+                        <field name="price_update_interval" string="Price Update Interval"/>
+                    </group>
+                    <footer>
+                        <button string="Save" type="object" name="set_external_api_integration_settings" class="btn-primary"/>
+                        <button string="Cancel" class="btn-secondary" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+    </data>
+</odoo>

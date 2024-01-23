@@ -1,0 +1,9 @@
+<odoo>
+    <data noupdate="1">
+        <!-- Product Category for Custom PCs -->
+        <record id="product_category_custom_pc" model="product.category">
+            <field name="name">Custom PCs</field>
+            <field name="parent_id" ref="product.product_category_all"/>
+        </record>
+    </data>
+</odoo>

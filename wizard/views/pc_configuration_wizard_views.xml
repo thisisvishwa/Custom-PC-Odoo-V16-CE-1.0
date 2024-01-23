@@ -1,0 +1,66 @@
+<odoo>
+    <data>
+
+        <!-- PC Configuration Wizard Form View -->
+        <record id="view_pc_configuration_wizard_form" model="ir.ui.view">
+            <field name="name">pc.configuration.wizard.form</field>
+            <field name="model">pc.configuration.wizard</field>
+            <field name="arch" type="xml">
+                <form string="Custom PC Configuration">
+                    <group>
+                        <field name="name"/>
+                        <field name="budget" widget="monetary"/>
+                        <field name="currency_id" invisible="1"/>
+                    </group>
+                    <notebook>
+                        <page string="Components">
+                            <group string="Processor">
+                                <field name="cpu_id" options="{'no_create': True}"/>
+                            </group>
+                            <group string="Graphics Card">
+                                <field name="gpu_id" options="{'no_create': True}"/>
+                            </group>
+                            <group string="Memory">
+                                <field name="ram_id" options="{'no_create': True}"/>
+                            </group>
+                            <group string="Storage">
+                                <field name="storage_id" options="{'no_create': True}"/>
+                            </group>
+                            <group string="Motherboard">
+                                <field name="motherboard_id" options="{'no_create': True}"/>
+                            </group>
+                            <group string="Other Components">
+                                <field name="additional_component_ids" widget="many2many_tags" options="{'no_create': True}"/>
+                            </group>
+                        </page>
+                        <page string="Summary">
+                            <group>
+                                <field name="summary" nolabel="1"/>
+                            </group>
+                        </page>
+                    </notebook>
+                    <footer>
+                        <button string="Cancel" class="btn-secondary" special="cancel"/>
+                        <button string="Validate" type="object" name="validate_build" class="btn-primary"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <!-- PC Configuration Wizard Action -->
+        <record id="action_pc_configuration_wizard" model="ir.actions.act_window">
+            <field name="name">Configure Custom PC</field>
+            <field name="res_model">pc.configuration.wizard</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="view_pc_configuration_wizard_form"/>
+            <field name="target">new</field>
+        </record>
+
+        <!-- PC Configuration Wizard Menu Item -->
+        <menuitem id="menu_pc_configuration_wizard"
+                  name="PC Configuration Wizard"
+                  action="action_pc_configuration_wizard"
+                  parent="product.menu_catalog"/>
+
+    </data>
+</odoo>

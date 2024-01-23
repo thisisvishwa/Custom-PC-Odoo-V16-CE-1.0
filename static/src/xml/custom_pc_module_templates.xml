@@ -1,0 +1,43 @@
+<templates>
+    <t t-name="CustomPCModule.MainView">
+        <div class="o_custom_pc_main_view">
+            <div class="o_custom_pc_header">
+                <h1>Custom PC Configuration</h1>
+            </div>
+            <div class="o_custom_pc_body">
+                <div id="pc-configuration-interface" class="custom-pc-configuration">
+                    <form class="o_form_custom_pc">
+                        <div class="o_custom_pc_components">
+                            <t t-foreach="COMPONENT_FIELDS" t-as="field">
+                                <div class="o_custom_pc_component">
+                                    <label t-att-for="field.name"><t t-esc="field.string"/></label>
+                                    <select t-att-id="field.name" t-att-name="field.name" class="o_custom_pc_select">
+                                        <t t-foreach="field.selection" t-as="option">
+                                            <option t-att-value="option[0]"><t t-esc="option[1]"/></option>
+                                        </t>
+                                    </select>
+                                </div>
+                            </t>
+                        </div>
+                        <div class="o_custom_pc_budget">
+                            <label for="budget-input">Budget:</label>
+                            <input type="number" id="budget-input" name="budget" class="o_custom_pc_budget_input"/>
+                        </div>
+                        <div class="o_custom_pc_actions">
+                            <button type="button" class="btn btn-primary o_custom_pc_validate">Validate Build</button>
+                        </div>
+                    </form>
+                </div>
+                <div id="compatibility-warning" class="compatibility-issue"></div>
+                <div id="price-update-notification"></div>
+            </div>
+        </div>
+    </t>
+
+    <t t-name="CustomPCModule.Notification">
+        <div class="notification">
+            <span class="notification-message"><t t-esc="message"/></span>
+            <button type="button" class="notification-close">×</button>
+        </div>
+    </t>
+</templates>

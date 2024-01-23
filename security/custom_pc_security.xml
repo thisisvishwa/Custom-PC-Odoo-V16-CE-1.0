@@ -1,0 +1,82 @@
+<odoo>
+    <data noupdate="1">
+
+        <!-- Custom PC User Group -->
+        <record id="group_custom_pc_user" model="res.groups">
+            <field name="name">Custom PC User</field>
+            <field name="category_id" ref="base.module_category_sales_management"/>
+        </record>
+
+        <!-- Custom PC Manager Group -->
+        <record id="group_custom_pc_manager" model="res.groups">
+            <field name="name">Custom PC Manager</field>
+            <field name="category_id" ref="base.module_category_sales_management"/>
+            <field name="users" eval="[(4, ref('base.user_root'))]"/>
+        </record>
+
+        <!-- Access Rights for Custom PC Model -->
+        <record id="access_custom_pc_user" model="ir.model.access">
+            <field name="name">custom_pc_access_user</field>
+            <field name="model_id" ref="model_custom_pc"/>
+            <field name="group_id" ref="group_custom_pc_user"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_unlink" eval="True"/>
+        </record>
+
+        <!-- Access Rights for Component Model -->
+        <record id="access_component_user" model="ir.model.access">
+            <field name="name">component_access_user</field>
+            <field name="model_id" ref="model_component"/>
+            <field name="group_id" ref="group_custom_pc_user"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_unlink" eval="True"/>
+        </record>
+
+        <!-- Access Rights for Compatibility Check Model -->
+        <record id="access_compatibility_check_user" model="ir.model.access">
+            <field name="name">compatibility_check_access_user</field>
+            <field name="model_id" ref="model_compatibility_check"/>
+            <field name="group_id" ref="group_custom_pc_user"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_unlink" eval="True"/>
+        </record>
+
+        <!-- Manager Rights: Inherit from User and add Delete Rights -->
+        <record id="access_custom_pc_manager" model="ir.model.access">
+            <field name="name">custom_pc_access_manager</field>
+            <field name="model_id" ref="model_custom_pc"/>
+            <field name="group_id" ref="group_custom_pc_manager"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_unlink" eval="True"/>
+        </record>
+
+        <record id="access_component_manager" model="ir.model.access">
+            <field name="name">component_access_manager</field>
+            <field name="model_id" ref="model_component"/>
+            <field name="group_id" ref="group_custom_pc_manager"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_unlink" eval="True"/>
+        </record>
+
+        <record id="access_compatibility_check_manager" model="ir.model.access">
+            <field name="name">compatibility_check_access_manager</field>
+            <field name="model_id" ref="model_compatibility_check"/>
+            <field name="group_id" ref="group_custom_pc_manager"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_unlink" eval="True"/>
+        </record>
+
+    </data>
+</odoo>

@@ -1,0 +1,51 @@
+{
+    'name': 'Custom PC Building Module',
+    'version': '1.0',
+    'summary': 'Custom PC Configuration and Assembly for Odoo 16 Community Edition',
+    'category': 'Sales',
+    'author': 'Your Company',
+    'website': 'https://www.yourcompany.com',
+    'license': 'AGPL-3',
+    'depends': ['base', 'sale', 'stock', 'website_sale'],
+    'data': [
+        'security/ir.model.access.csv',
+        'security/custom_pc_security.xml',
+        'views/custom_pc_views.xml',
+        'views/component_views.xml',
+        'views/compatibility_check_views.xml',
+        'views/templates.xml',
+        'data/product_category_data.xml',
+        'data/component_data.xml',
+        'wizard/pc_configuration_wizard.py',
+        'wizard/views/pc_configuration_wizard_views.xml',
+        'reports/custom_pc_report.xml',
+        'reports/custom_pc_report_templates.xml',
+        'api/external_api_integration.py',
+        'api/views/external_api_integration_views.xml',
+        'data/scheduler_data.xml',
+    ],
+    'demo': [],
+    'qweb': [
+        'static/src/xml/custom_pc_module_templates.xml',
+    ],
+    'installable': True,
+    'application': True,
+    'auto_install': False,
+    'assets': {
+        'web.assets_backend': [
+            'custom_pc_module/static/src/js/custom_pc_module.js',
+            'custom_pc_module/static/src/css/custom_pc_module.css',
+        ],
+        'web.assets_qweb': [
+            'custom_pc_module/static/src/xml/*.xml',
+        ],
+    },
+    'external_dependencies': {
+        'python': [],
+    },
+    'test': [
+        'tests/test_custom_pc.py',
+        'tests/test_component.py',
+        'tests/test_compatibility_check.py',
+    ],
+}

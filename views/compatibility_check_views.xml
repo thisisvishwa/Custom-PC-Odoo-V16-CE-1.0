@@ -1,0 +1,69 @@
+<odoo>
+    <data>
+
+        <!-- Compatibility Check Form View -->
+        <record id="compatibility_check_form_view" model="ir.ui.view">
+            <field name="name">compatibility.check.form</field>
+            <field name="model">compatibility.check</field>
+            <field name="arch" type="xml">
+                <form string="Compatibility Check">
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <field name="component_id"/>
+                            <field name="compatible_with"/>
+                            <field name="compatibility_notes" widget="text"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- Compatibility Check Tree View -->
+        <record id="compatibility_check_tree_view" model="ir.ui.view">
+            <field name="name">compatibility.check.tree</field>
+            <field name="model">compatibility.check</field>
+            <field name="arch" type="xml">
+                <tree string="Compatibility Checks">
+                    <field name="name"/>
+                    <field name="component_id"/>
+                    <field name="compatible_with"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Compatibility Check Search View -->
+        <record id="compatibility_check_search_view" model="ir.ui.view">
+            <field name="name">compatibility.check.search</field>
+            <field name="model">compatibility.check</field>
+            <field name="arch" type="xml">
+                <search string="Search Compatibility Checks">
+                    <field name="name"/>
+                    <field name="component_id"/>
+                    <field name="compatible_with"/>
+                </search>
+            </field>
+        </record>
+
+        <!-- Compatibility Check Action -->
+        <record id="action_compatibility_check" model="ir.actions.act_window">
+            <field name="name">Compatibility Checks</field>
+            <field name="res_model">compatibility.check</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="compatibility_check_tree_view"/>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Define compatibility checks to ensure components work together.
+                </p>
+            </field>
+        </record>
+
+        <!-- Compatibility Check Menu Item -->
+        <menuitem id="menu_compatibility_check"
+                  name="Compatibility Checks"
+                  parent="custom_pc_builder_main_menu"
+                  action="action_compatibility_check"
+                  sequence="30"/>
+
+    </data>
+</odoo>

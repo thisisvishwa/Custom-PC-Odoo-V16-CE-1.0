@@ -1,0 +1,102 @@
+<odoo>
+    <data>
+
+        <!-- Custom PC Configuration Form View -->
+        <record id="custom_pc_form_view" model="ir.ui.view">
+            <field name="name">custom.pc.form</field>
+            <field name="model">custom.pc</field>
+            <field name="arch" type="xml">
+                <form string="Custom PC Configuration">
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <field name="user_id"/>
+                            <field name="state"/>
+                        </group>
+                        <notebook>
+                            <page string="Components">
+                                <field name="component_ids" widget="many2many_tags" options="{'no_create': True}">
+                                    <tree editable="bottom">
+                                        <field name="name"/>
+                                        <field name="category_id"/>
+                                        <field name="price"/>
+                                        <field name="quantity"/>
+                                    </tree>
+                                </field>
+                            </page>
+                            <page string="Budget">
+                                <group>
+                                    <field name="budget_limit" widget="monetary"/>
+                                    <field name="total_price" widget="monetary"/>
+                                </group>
+                            </page>
+                            <page string="Compatibility">
+                                <field name="compatibility_check_ids" context="{'default_custom_pc_id': active_id}">
+                                    <tree>
+                                        <field name="component_id"/>
+                                        <field name="status"/>
+                                        <field name="note"/>
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- Custom PC Configuration Tree View -->
+        <record id="custom_pc_tree_view" model="ir.ui.view">
+            <field name="name">custom.pc.tree</field>
+            <field name="model">custom.pc</field>
+            <field name="arch" type="xml">
+                <tree string="Custom PC Configurations">
+                    <field name="name"/>
+                    <field name="user_id"/>
+                    <field name="total_price"/>
+                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Custom PC Configuration Search View -->
+        <record id="custom_pc_search_view" model="ir.ui.view">
+            <field name="name">custom.pc.search</field>
+            <field name="model">custom.pc</field>
+            <field name="arch" type="xml">
+                <search string="Search Custom PC Configurations">
+                    <field name="name"/>
+                    <field name="user_id"/>
+                    <field name="state"/>
+                    <filter string="Draft" domain="[('state', '=', 'draft')]"/>
+                    <filter string="Confirmed" domain="[('state', '=', 'confirmed')]"/>
+                    <filter string="Cancelled" domain="[('state', '=', 'cancelled')]"/>
+                    <group expand="0" string="Group By">
+                        <filter string="User" domain="[]" context="{'group_by': 'user_id'}"/>
+                        <filter string="State" domain="[]" context="{'group_by': 'state'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <!-- Custom PC Configuration Action -->
+        <record id="action_custom_pc" model="ir.actions.act_window">
+            <field name="name">Custom PCs</field>
+            <field name="res_model">custom.pc</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="custom_pc_tree_view"/>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Configure and manage custom PC builds.
+                </p>
+            </field>
+        </record>
+
+        <!-- Custom PC Configuration Menu Item -->
+        <menuitem id="menu_custom_pc" name="Custom PCs"
+                  parent="product.menu_catalog"
+                  action="action_custom_pc"
+                  sequence="5"/>
+
+    </data>
+</odoo>

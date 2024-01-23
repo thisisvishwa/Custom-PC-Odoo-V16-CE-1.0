@@ -1,0 +1,108 @@
+<odoo>
+    <data>
+
+        <!-- Custom PC Configuration Form View -->
+        <record id="custom_pc_form_view" model="ir.ui.view">
+            <field name="name">custom.pc.form</field>
+            <field name="model">custom.pc</field>
+            <field name="arch" type="xml">
+                <form string="Custom PC Configuration">
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <field name="CUSTOM_PC_CATEGORY_ID" invisible="1"/>
+                        </group>
+                        <notebook>
+                            <page string="Components">
+                                <field name="component_ids" widget="many2many_tags">
+                                    <tree editable="bottom">
+                                        <field name="name"/>
+                                        <field name="category_id"/>
+                                        <field name="price"/>
+                                        <field name="quantity"/>
+                                    </tree>
+                                </field>
+                            </page>
+                            <page string="Budget">
+                                <group>
+                                    <field name="BUDGET_LIMIT"/>
+                                    <label for="BUDGET_LIMIT" string="Set your budget for the custom PC"/>
+                                </group>
+                            </page>
+                            <page string="Compatibility Check">
+                                <field name="compatibility_check_ids" widget="many2many_tags">
+                                    <tree editable="bottom">
+                                        <field name="component_id"/>
+                                        <field name="status"/>
+                                        <field name="note"/>
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- Component Form View -->
+        <record id="component_form_view" model="ir.ui.view">
+            <field name="name">component.form</field>
+            <field name="model">component</field>
+            <field name="arch" type="xml">
+                <form string="Component">
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <field name="category_id"/>
+                            <field name="price"/>
+                            <field name="quantity"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- Compatibility Check Form View -->
+        <record id="compatibility_check_form_view" model="ir.ui.view">
+            <field name="name">compatibility.check.form</field>
+            <field name="model">compatibility.check</field>
+            <field name="arch" type="xml">
+                <form string="Compatibility Check">
+                    <sheet>
+                        <group>
+                            <field name="component_id"/>
+                            <field name="status"/>
+                            <field name="note"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- Custom PC Configuration Kanban View -->
+        <record id="custom_pc_kanban_view" model="ir.ui.view">
+            <field name="name">custom.pc.kanban</field>
+            <field name="model">custom.pc</field>
+            <field name="arch" type="xml">
+                <kanban>
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div class="oe_kanban_global_click">
+                                <field name="name"/>
+                                <div class="o_kanban_record_bottom">
+                                    <div class="oe_kanban_bottom_left">
+                                        <field name="total_price" widget="monetary"/>
+                                    </div>
+                                    <div class="oe_kanban_bottom_right">
+                                        <field name="state" widget="statusbar"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+
+    </data>
+</odoo>

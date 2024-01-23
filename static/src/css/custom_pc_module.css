@@ -1,0 +1,93 @@
+/* Custom PC Module Styles */
+
+.custom-pc-configuration {
+    border: 1px solid #e6e6e6;
+    padding: 15px;
+    margin-bottom: 20px;
+    background-color: #f9f9f9;
+}
+
+#pc-configuration-interface {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.component-selection {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin: 5px;
+    border-radius: 4px;
+    background-color: #fff;
+    cursor: pointer;
+    transition: border-color 0.3s ease;
+}
+
+.component-selection:hover {
+    border-color: #007bff;
+}
+
+#budget-input {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+}
+
+#compatibility-warning,
+#price-update-notification {
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 4px;
+    color: #856404;
+    background-color: #fff3cd;
+    border-color: #ffeeba;
+}
+
+#compatibility-warning {
+    display: none; /* Hidden by default, shown when there are compatibility issues */
+}
+
+.compatibility-issue {
+    color: #dc3545;
+    font-weight: bold;
+}
+
+.budget-exceeded {
+    color: #dc3545;
+    font-weight: bold;
+}
+
+.validation-success {
+    color: #28a745;
+    font-weight: bold;
+}
+
+.order-list {
+    margin-top: 20px;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.order-list th,
+.order-list td {
+    text-align: left;
+    padding: 8px;
+    border-bottom: 1px solid #ddd;
+}
+
+.order-list th {
+    background-color: #f2f2f2;
+}
+
+/* Responsive design adjustments */
+@media (max-width: 768px) {
+    #pc-configuration-interface {
+        flex-direction: column;
+    }
+
+    .component-selection {
+        width: 100%;
+    }
+}
