@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_custom_pc_user,custom_pc.model_custom_pc,custom_pc.model_custom_pc,base.group_user,1,1,1,1
+access_component_user,custom_pc.model_component,custom_pc.model_component,base.group_user,1,1,1,1
+access_compatibility_check_user,custom_pc.model_compatibility_check,custom_pc.model_compatibility_check,base.group_user,1,1,1,1

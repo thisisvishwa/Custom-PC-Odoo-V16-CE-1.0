@@ -1,0 +1,73 @@
+<odoo>
+    <data noupdate="1">
+        <!-- Product Category for Custom PCs -->
+        <record id="product_category_custom_pc" model="product.category">
+            <field name="name">Custom PCs</field>
+            <field name="parent_id" ref="product.product_category_all"/>
+        </record>
+
+        <!-- Component Data -->
+        <!-- CPUs -->
+        <record id="component_cpu_i5" model="product.product">
+            <field name="name">Intel Core i5</field>
+            <field name="categ_id" ref="product_category_custom_pc"/>
+            <field name="type">product</field>
+        </record>
+        <record id="component_cpu_i7" model="product.product">
+            <field name="name">Intel Core i7</field>
+            <field name="categ_id" ref="product_category_custom_pc"/>
+            <field name="type">product</field>
+        </record>
+
+        <!-- GPUs -->
+        <record id="component_gpu_gtx" model="product.product">
+            <field name="name">NVIDIA GTX 1660</field>
+            <field name="categ_id" ref="product_category_custom_pc"/>
+            <field name="type">product</field>
+        </record>
+        <record id="component_gpu_rtx" model="product.product">
+            <field name="name">NVIDIA RTX 3080</field>
+            <field name="categ_id" ref="product_category_custom_pc"/>
+            <field name="type">product</field>
+        </record>
+
+        <!-- RAM -->
+        <record id="component_ram_8gb" model="product.product">
+            <field name="name">8GB DDR4 RAM</field>
+            <field name="categ_id" ref="product_category_custom_pc"/>
+            <field name="type">product</field>
+        </record>
+        <record id="component_ram_16gb" model="product.product">
+            <field name="name">16GB DDR4 RAM</field>
+            <field name="categ_id" ref="product_category_custom_pc"/>
+            <field name="type">product</field>
+        </record>
+
+        <!-- Storage -->
+        <record id="component_storage_ssd" model="product.product">
+            <field name="name">512GB SSD</field>
+            <field name="categ_id" ref="product_category_custom_pc"/>
+            <field name="type">product</field>
+        </record>
+        <record id="component_storage_hdd" model="product.product">
+            <field name="name">1TB HDD</field>
+            <field name="categ_id" ref="product_category_custom_pc"/>
+            <field name="type">product</field>
+        </record>
+
+        <!-- Motherboards -->
+        <record id="component_motherboard_atx" model="product.product">
+            <field name="name">ATX Motherboard</field>
+            <field name="categ_id" ref="product_category_custom_pc"/>
+            <field name="type">product</field>
+        </record>
+        <record id="component_motherboard_microatx" model="product.product">
+            <field name="name">Micro ATX Motherboard</field>
+            <field name="categ_id" ref="product_category_custom_pc"/>
+            <field name="type">product</field>
+        </record>
+
+        <!-- Other Components Placeholder -->
+        <!-- Add more component records as needed -->
+    </data>
+</odoo>

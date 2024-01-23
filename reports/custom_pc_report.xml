@@ -1,0 +1,72 @@
+<odoo>
+    <data>
+        <!-- Custom PC Report Template -->
+        <template id="custom_pc_report_template">
+            <t t-name="custom_pc_building_module.report_custom_pc">
+                <div class="page">
+                    <div class="oe_structure"/>
+                    <div class="header">
+                        <h1>Custom PC Configuration Report</h1>
+                    </div>
+                    <table class="table table-condensed">
+                        <thead>
+                            <tr>
+                                <th>Component Type</th>
+                                <th>Description</th>
+                                <th>Quantity</th>
+                                <th>Unit Price</th>
+                                <th>Subtotal</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <t t-foreach="doc.component_ids" t-as="component">
+                                <tr>
+                                    <td>
+                                        <span t-field="component.component_type_id.name"/>
+                                    </td>
+                                    <td>
+                                        <span t-field="component.name"/>
+                                    </td>
+                                    <td>
+                                        <span t-field="component.quantity"/>
+                                    </td>
+                                    <td>
+                                        <span t-field="component.price"/>
+                                    </td>
+                                    <td>
+                                        <span t-field="component.subtotal"/>
+                                    </td>
+                                </tr>
+                            </t>
+                        </tbody>
+                    </table>
+                    <div class="oe_structure"/>
+                    <div class="footer">
+                        <div>
+                            <strong>Total:</strong>
+                            <span t-field="doc.total_price"/>
+                        </div>
+                        <div>
+                            <strong>Budget:</strong>
+                            <span t-field="doc.budget"/>
+                        </div>
+                        <div class="text-muted">
+                            Generated on <span t-field="doc.create_date"/>
+                        </div>
+                    </div>
+                </div>
+            </t>
+        </template>
+
+        <!-- Custom PC Report Action -->
+        <report
+            id="action_report_custom_pc"
+            model="custom.pc"
+            string="Custom PC Report"
+            report_type="qweb-pdf"
+            name="custom_pc_building_module.report_custom_pc"
+            file="custom_pc_building_module.report_custom_pc"
+            print_report_name="'Custom PC - ' + object.name"
+        />
+    </data>
+</odoo>
